@@ -1,5 +1,12 @@
-package main
+  // single line comment
+  /*
+    multiple
+    line
+    comment
+  */
 
+
+package main
 import "fmt"
 
 func main(){
