@@ -1,78 +1,72 @@
-<h1 align = "center">Go-Learning-Path </h1>
+<h1 align="center">Go-Learning-Path</h1>
 
-Welcome to **Go Learning Path**! This repository contains my journey of learning the **Go (Golang) programming language**. It includes various Go programs that demonstrate fundamental concepts and syntax.
+Welcome to my Go (Golang) learning journey. This repo collects small, focused examples that cover core language features. Each file runs independently with its own main function.
 
-## 📌 About This Repository
+## 📌 What’s inside
 
-This repository serves as documentation of my **Go language learning process**. The files here cover essential topics such as **variables, escape sequences, static & dynamic variables, and shortcut variable declarations**.
+Hands-on examples for variables, formatting, input, control flow, functions, and more.
 
----
+## 📂 Lesson Index
 
-## 📂 Project Structure
+Each file is a standalone program. Use the exact filename (many have spaces).
 
-Each file contains a Go program with explanations and examples.
+| File                                      | Topic                                   |
+| ----------------------------------------- | --------------------------------------- |
+| `01. First.go`                            | Print basics (fmt.Print/Println)        |
+| `02. Escape Sequences.go`                 | Newline, tab, quotes, and other escapes |
+| `03. Static Variable.go`                  | var declarations and basic types        |
+| `04. Dynamic Variable.go`                 | Type inference (compiler infers type)   |
+| `05. Shortcut Variable Declaration.go`    | Short variable syntax `:=`              |
+| `06. Formatting Output.go`                | fmt.Printf and formatting verbs         |
+| `07. Constants and Getting User Input.go` | const and simple user input             |
+| `08. Number Conversion Calculator.go`     | Numeric conversion + simple calculator  |
+| `09. if_else.go`                          | if/else conditionals                    |
+| `10. switch_case.go`                      | switch statements                       |
+| `11.function.go`                          | Functions: basics and parameters        |
+| `12.functionwith_return_value.go`         | Functions with return values            |
+| `13.more_function.go`                     | More function examples                  |
 
-| File Name | Description |
-|-----------|------------|
-| **First.go** | A basic Go program printing my personal information. |
-| **Escape Sequences.go** | Demonstrates the use of escape sequences in Go. |
-| **Static Variable.go** | Shows how to declare and use static variables in Go. |
-| **Dynamic Variable.go** | Demonstrates dynamic variable declaration in Go. |
-| **Shortcut Variable Declaration.go** | Introduces the shorthand method for variable declaration. |
-
----
-
-## 📝 Code Documentation
-
-### 1️⃣ **First.go**  
-A simple program that prints personal information.
-
-### 2️⃣ **Escape Sequences.go**  
-Demonstrates the use of escape sequences like `\n` (new line) and `\t` (tab) in Go.
-
-### 3️⃣ **Static Variable.go**  
-Covers static variable declaration using `var` and different data types such as `int`, `float32`, and `string`.
-
-### 4️⃣ **Dynamic Variable.go**  
-Shows dynamic variable declaration where the type is inferred from the assigned value.
-
-### 5️⃣ **Shortcut Variable Declaration.go**  
-Introduces Go's shorthand syntax (`:=`) for quick variable declaration and assignment.
-
----
+> Note: Go doesn’t have “static variables” like some languages; here it means plain `var` declarations.
 
 ## 🛠 Prerequisites
 
-To run these programs, you need to have **Go installed** on your system.
+- Install Go from https://go.dev/dl/
+- Verify in a new PowerShell window:
 
-### ✅ Install Go
-
-- Download and install Go from [golang.org](https://go.dev/dl/)
-- Verify installation by running `go version` in your terminal or command prompt.
-
----
-
-## 🚀 How to Run the Code
-
-1. Clone this repository:
-
-```
-git clone https://github.com/basharulalammazu/Go-Learning-Path.git
+```powershell
+go version
 ```
 
-2. Navigate to the directory:
+If the command isn’t found, ensure Go’s bin folder is on your PATH (e.g., `C:\Program Files\Go\bin`) and open a new PowerShell.
 
-cd Go-Learning-Path
+## 🚀 Run a lesson (Windows PowerShell)
 
-3. Run any Go file using:
+1. Open PowerShell and go to the repo folder:
 
-```
-go run filename.go
-```
-
-Example:
-```
-go run First.go
+```powershell
+cd d:\Github\Go-Learning-Path
 ```
 
----
+2. Run a specific file. Quote paths with spaces:
+
+```powershell
+go run ".\01. First.go"
+go run ".\02. Escape Sequences.go"
+go run ".\09. if_else.go"
+```
+
+3. Optional: build an exe and run it:
+
+```powershell
+go build -o lesson01.exe ".\01. First.go"; .\lesson01.exe
+```
+
+> Tip: Avoid `go run .` in this folder because it contains multiple independent main packages.
+
+## 🔧 Troubleshooting
+
+- "'go' is not recognized": Install Go and/or add Go’s bin folder to PATH. Open a new terminal and run `go version`.
+- Filename has spaces: Always wrap the filename in quotes, e.g., `go run ".\02. Escape Sequences.go"`.
+- Multiple mains error: Run a single file, not the whole directory.
+
+Enjoy exploring Go! If you find something that could be clearer, feel free to open an issue or PR.
