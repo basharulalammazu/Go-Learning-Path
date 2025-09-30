@@ -1,11 +1,3 @@
-  // single line comment
-  /*
-    multiple
-    line
-    comment
-  */
-
-
 package main
 import "fmt"
 
