@@ -27,20 +27,3 @@ func main() {
 	}
 	printUserInfo(user2)
 }
-/*
-Struct: A collection of fields
-1. Define a struct type
-2. Create struct instances (objects)
-3. Access and modify struct fields
-
-4. Use struct in functions
-5. Anonymous struct
-6. Nested struct
-7. Struct with methods
-8. Pointer to struct
-9. Struct tags
-10. JSON and struct
-
-
-go run 21.struct.go
-*/
