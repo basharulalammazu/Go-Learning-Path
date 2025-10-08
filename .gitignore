@@ -20,9 +20,8 @@ vendor/
 .idea/
 *.swp
 
-# Go build cache & modules (generally should not commit)
-/go.sum
-# If you intentionally vendor, remove vendor/ ignore above
+# Go modules: keep go.mod and go.sum tracked (do NOT ignore go.sum)
+# If you intentionally vendor, you may remove vendor/ from ignore above
 
 # Local environment files
 .env
