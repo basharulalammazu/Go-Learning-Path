@@ -1,0 +1,28 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+coverage.txt
+
+# Dependency directories (sometimes created by editors/tools)
+vendor/
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+
+# Go build cache & modules (generally should not commit)
+/go.sum
+# If you intentionally vendor, remove vendor/ ignore above
+
+# Local environment files
+.env
