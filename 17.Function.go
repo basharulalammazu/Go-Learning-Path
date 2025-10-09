@@ -37,13 +37,19 @@ func main() {
 	StandardFunction() // Calling the standard function
 
 	// When a function does not have a name, it is called an anonymous function
-	// It can be assigned to a variable or called immediately so here we are calling it immediately Invoked Expression (IIFE)
 	func () {
+		fmt.Println("This is an anonymous function.")
+	}
+
+	// An anonymous function that is called immediately after its definition.
+	// You can identify it by the trailing parentheses () after the function body.
+
+    func () {
 		fmt.Println("This is an anonymous function.")
 	}()
 
 
-	// Noob function expression
+	// Noob function expression: A function expression that is not assigned to a variable 
 	noobFunction := func() {
 		fmt.Println("This is a noob function expression assigned to a variable.")
 	}
