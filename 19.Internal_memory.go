@@ -74,6 +74,7 @@ func init(
 				2.2.1 Garbage Collector (GC)
 
 	Stack Frame => allocated memory for each function call. Its store reference. Return address, Local variables
+	Heap => store actual value. Dynamic Memory Allocation
 
 	Code Segment store in Binary file
 	Binary file store in RAM
@@ -85,5 +86,4 @@ func init(
 
 	code Segment contants are read only, so we can't change it
 	Data Segment/ Global Memory variable are read and write both, so we can change it
-	
 */
