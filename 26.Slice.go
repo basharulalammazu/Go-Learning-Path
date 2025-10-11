@@ -1,14 +1,35 @@
 /*
-	slice => A slice is a dynamically-sized, flexible view into the elements of an array.
-	It is a lightweight data structure that provides access to a contiguous segment of an array.
-	Slices are more commonly used in Go than arrays because they offer greater flexibility and convenience.
 
-	Here are some key points about slices in Go:
-	1. Dynamic Size: Unlike arrays, slices can grow and shrink in size as needed. You can append elements to a slice using the built-in append function.
-	2. Underlying Array: A slice is backed by an underlying array. When you create a slice, it references a portion of an array, and changes made to the slice will affect the underlying array.
-	3. Slice Literal: You can create a slice using a slice literal, which is similar to an array literal but without specifying the size. For example: mySlice := []int{1, 2, 3}.
-	4. Length and Capacity: Slices have both a length (the number of elements in the slice) and a capacity (the maximum number of elements the slice can hold before needing to allocate more memory). You can use the built-in len and cap functions to get these values.
-	5. Slicing Syntax: You can create a new slice from an existing slice or array using slicing syntax. For example: newSlice := mySlice[1:4] creates a new slice containing elements from index 1 to index 3 of mySlice.
+🧩 Go Slice — A Powerful, Dynamic Data Structure
+
+    ➤ Definition:
+      A slice is a dynamically-sized, flexible view into the elements of an array.
+      It provides access to a contiguous segment of an array and grows automatically when needed.
+
+    ➤ Why Slices Are Preferred:
+      Slices are more commonly used than arrays because they are lightweight,
+      dynamic, and offer more flexibility.
+
+    🔹 Key Features of Slices in Go:
+      1️⃣ Dynamic Size:
+          - Slices can grow and shrink using the built-in append() function.
+      2️⃣ Underlying Array:
+          - Each slice references an underlying array.
+          - Modifying the slice affects the underlying array (if sharing the same base array).
+      3️⃣ Slice Literal:
+          - You can directly create slices using: mySlice := []int{1, 2, 3}.
+      4️⃣ Length vs Capacity:
+          - len() → current number of elements.
+          - cap() → total space available before needing a new allocation.
+      5️⃣ Slicing Syntax:
+          - newSlice := mySlice[start:end]
+            (includes elements from start to end-1)
+
+    🧠 Internals:
+      Every slice holds:
+        • Pointer → to the first accessible element
+        • Length  → number of accessible elements
+        • Capacity → number of elements that can fit before reallocation
 */
 
 package main
@@ -18,67 +39,98 @@ import (
 	"sort"
 )
 
-func main(){
-	arr := [6]string {"This", "is", "a", "GO", "Interview", "Question"}
-	fmt.Println(arr)
+func main() {
 
-	// Create a slice from the array
-	slices := arr[1:4] // Pointer 1, length 3, capacity 5
-	fmt.Println("Length of slices:", len(slices))
-	// Length = ending_index - starting_index = 4 - 1 = 3 => "is", "a", "GO"
-	fmt.Println("Capacity of slices:", cap(slices)) // Capacity is calculated from the starting index to the end of the array
-	// Capacity = len(arr) - starting_index = 6 - 1 = 5 => "is", "a", "GO", "Interview", "Question"
-	fmt.Println("Slices:", slices)
+	// --- [1] Create an array and make a slice from it ---
+	arr := [6]string{"This", "is", "a", "GO", "Interview", "Question"}
+	fmt.Println("Original Array:", arr)
 
+	slices := arr[1:4] // points to elements ["is", "a", "GO"]
+	fmt.Println("\n--- Slice 1 (from array) ---")
+	fmt.Println("Slice Elements:", slices)
+	fmt.Println("Length:", len(slices))   // 4 - 1 = 3
+	fmt.Println("Capacity:", cap(slices)) // 6 - 1 = 5
+
+	// Sort the slice (also affects the original array portion)
 	sort.Strings(slices)
-	fmt.Println("Sorted Slices:", slices)
+	fmt.Println("Sorted Slice:", slices)
+	fmt.Println("Array after sorting slice:", arr)
 
 
 
-
-
-	// Create a new slice from the existing slice 
-	slices2 := slices[1:3] // Pointer 1, length 2, capacity 4
-	fmt.Println("Length of slices2:", len(slices2))	
-	fmt.Println("Capacity of slices2:", cap(slices2))
-	fmt.Println("Slices2:", slices2)
-
-
+	// --- [2] Create a new slice from an existing slice ---
+	slices2 := slices[1:3] // picks elements from index 1 to 2 of 'slices'
+	fmt.Println("\n--- Slice 2 (from slice 1) ---")
+	fmt.Println("Slice Elements:", slices2)
+	fmt.Println("Length:", len(slices2))   // 3 - 1 = 2
+	fmt.Println("Capacity:", cap(slices2)) // inherited from base array
 
 
 
-	// slices_literal => a shorthand syntax used to create a slice by specifying its elements directly
-	// Create a slice using make function
-	slices_literal := []int {10, 20, 30, 40} // Pointer 0, length 4, capacity 4
-	fmt.Println("Slices Literal:", slices_literal)
-	fmt.Println("Length of slices_literal:", len(slices_literal))
-	fmt.Println("Capacity of slices_literal:", cap(slices_literal))
+	// --- [3] Slice Literal ---
+	sliceLiteral := []int{10, 20, 30, 40}
+	fmt.Println("\n--- Slice Literal ---")
+	fmt.Println("Slice:", sliceLiteral)
+	fmt.Println("Length:", len(sliceLiteral))
+	fmt.Println("Capacity:", cap(sliceLiteral))
 
 
 
-	// Create a slice using make function with length
-	s1 := make([]int, 3) // Pointer 0, length 3, capacity 3
-	fmt.Println("Slice s1:", s1)
-	fmt.Println("Length of s1:", len(s1))
-	fmt.Println("Capacity of s1:", cap(s1))
+	// --- [4] make() function examples ---
+	s1 := make([]int, 3) // len = 3, cap = 3
+	fmt.Println("\n--- Slice s1 (make with only length) ---")
+	fmt.Println("Slice:", s1)
+	fmt.Println("Length:", len(s1))
+	fmt.Println("Capacity:", cap(s1))
 
-	// Create a slice using make function with specified capacity and length
-	s2 := make([]int, 3, 5) // Pointer 0, length 3, capacity 5
-	fmt.Println("Slice s2:", s2)
-	fmt.Println("Length of s2:", len(s2))
-	fmt.Println("Capacity of s2:", cap(s2))
+	s2 := make([]int, 3, 5) // len = 3, cap = 5
+	fmt.Println("\n--- Slice s2 (make with length & capacity) ---")
+	fmt.Println("Slice:", s2)
+	fmt.Println("Length:", len(s2))
+	fmt.Println("Capacity:", cap(s2))
 
 
-	// Empty Slice
+
+	// --- [5] Empty slice + append demonstration ---
 	var s3 []int
-	fmt.Println("Slice s3:", s3)
-	fmt.Println("Length of s3:", len(s3))
-	fmt.Println("Capacity of s3:", cap(s3))
-	 
-	// Append elements to a slice
-	s3 = append(s3, 1)
-	fmt.Println("Slice s3 after appending 1:", s3)
-	fmt.Println("Length of s3 after appending 1:", len(s3))
-	fmt.Println("Capacity of s3 after appending 1:", cap(s3))
+	fmt.Println("\n--- Slice s3 (empty + append) ---")
+	fmt.Printf("Initial: len=%d cap=%d slice=%v\n", len(s3), cap(s3), s3)
 
-}
+	for i := 1; i <= 12; i++ {
+		s3 = append(s3, i)
+		fmt.Printf("After appending %2d → len=%2d cap=%2d slice=%v\n", i, len(s3), cap(s3), s3)
+	}
+
+
+/*
+Go Slice Internal Properties
+
+Every slice in Go maintains three core properties:
+	Pointer — Points to the first element in the underlying array (that is accessible through the slice).
+	Length (len) — The number of elements currently in the slice.
+	Capacity (cap) — The maximum number of elements that can be held in the slice before a new underlying array must be allocated.
+
+
+Behavior When Appending
+	When you use the append() function, Go checks if the slice has enough capacity to add the new elements:
+
+	Case 1: len < cap
+		The new element is added to the existing underlying array.
+		len increases by 1 (or by the number of appended elements).
+		cap remains unchanged.
+		The Pointer still points to the same array.
+	Case 2: len == cap
+		Go must allocate a new underlying array.	
+		All existing elements are copied into this new array.
+		The new element(s) are added after copying.
+		The Pointer now points to the new array.
+
+Capacity Growth Rule in Go
+When the capacity is exhausted:
+	If the current capacity ≤ 1024
+		→ New capacity = 2 × old capacity
+	If the current capacity > 1024
+		→ New capacity = old capacity + (old capacity / 4)
+		→ (i.e., increase by 25%)
+
+*/
