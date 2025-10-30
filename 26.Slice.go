@@ -14,7 +14,7 @@
       1️⃣ Dynamic Size:
           - Slices can grow and shrink using the built-in append() function.
       2️⃣ Underlying Array:
-          - Each slice references an underlying array.
+          - Each slice references an underlyisng array.
           - Modifying the slice affects the underlying array (if sharing the same base array).
       3️⃣ Slice Literal:
           - You can directly create slices using: mySlice := []int{1, 2, 3}.
